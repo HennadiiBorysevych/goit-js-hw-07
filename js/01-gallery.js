@@ -1,10 +1,11 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-const photosList = document.querySelector('.gallery')
+const photosList = document.querySelector(".gallery");
 
 function photoMurkupItems(data) {
-    return data.map(item => {
-        return `
+  return data
+    .map((item) => {
+      return `
         <div class="gallery__item">
             <a class="gallery__link" href="${item.original}">
                 <img
@@ -14,30 +15,32 @@ function photoMurkupItems(data) {
                 class="gallery__image"
                 />
             </a>
-        </div>`
-    }).join("")
+        </div>`;
+    })
+    .join("");
 }
 
-const handleMurkupItems = photoMurkupItems(galleryItems)
+const handleMurkupItems = photoMurkupItems(galleryItems);
 photosList.innerHTML = handleMurkupItems;
 
-photosList.addEventListener("click",handlePhotoOriginal)
+photosList.addEventListener("click", handlePhotoOriginal);
 
 function handlePhotoOriginal(e) {
-    if (e.target.nodeName !== "IMG") {
-        return;
-    }
-const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" class="gallery__image" alt="${e.target.alt}">
-`)
-    instance.show()
-    e.preventDefault();
-    document.addEventListener('keydown', closeModalOnEscape);
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
 
-    function closeModalOnEscape(e) {
-        if (e.key === "Escape") {    
-        instance.close();
-        document.removeEventListener('keydown', closeModalOnEscape);
+  const instance = basicLightbox.create(`
+    <img src="${e.target.dataset.source}" class="gallery__image" alt="${e.target.alt}">
+`);
+  instance.show();
+  e.preventDefault();
+  document.addEventListener("keydown", closeModalOnEscape);
+
+  function closeModalOnEscape(e) {
+    if (e.key === "Escape") {
+      instance.close();
+      document.removeEventListener("keydown", closeModalOnEscape);
     }
-}
+  }
 }
