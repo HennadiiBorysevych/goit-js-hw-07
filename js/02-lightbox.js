@@ -19,7 +19,5 @@ function photoMurkupItems(data) {
 }
 
 const handleMurkupItems = photoMurkupItems(galleryItems)
-
 photosList.innerHTML= handleMurkupItems;
-
 const lightbox = new SimpleLightbox('.gallery a', {captionsData:"alt", captionDelay: "250"});

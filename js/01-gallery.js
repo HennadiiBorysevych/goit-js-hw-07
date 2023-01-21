@@ -19,8 +19,7 @@ function photoMurkupItems(data) {
 }
 
 const handleMurkupItems = photoMurkupItems(galleryItems)
-
-photosList.innerHTML= handleMurkupItems;
+photosList.innerHTML = handleMurkupItems;
 
 photosList.addEventListener("click",handlePhotoOriginal)
 
@@ -32,17 +31,12 @@ const instance = basicLightbox.create(`
     <img src="${e.target.dataset.source}" class="gallery__image" alt="${e.target.alt}">
 `)
     instance.show()
-
     e.preventDefault();
-
     document.addEventListener('keydown', closeModalOnEscape);
 
     function closeModalOnEscape(e) {
-        console.log(e);
-    if (e.key === "Escape") {
-            
+        if (e.key === "Escape") {    
         instance.close();
-
         document.removeEventListener('keydown', closeModalOnEscape);
     }
 }
